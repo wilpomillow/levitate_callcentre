@@ -1,0 +1,160 @@
+@import "tailwindcss";
+
+/* ---------------------------------------
+   Theme tokens
+--------------------------------------- */
+:root {
+  --bg: #ffffff;
+
+  /* section backgrounds (light) */
+  --section-1: #ffffff;
+  --section-2: #fbfff7;
+  --section-3: #ffffff;
+  --section-cta: #ffffff;
+
+  --panel: rgba(255, 255, 255, 0.72);
+  --text: #1f2937; /* dark grey in light mode */
+  --muted: rgba(31, 41, 55, 0.72);
+
+  --green: #6ec72f;
+  --green-2: #266431;
+
+  --ring: rgba(110, 199, 47, 0.38);
+  --shadow: 0 14px 50px rgba(0, 0, 0, 0.14);
+}
+
+.dark {
+  --bg: #0f1114;
+
+  /* section backgrounds (dark) */
+  --section-1: #0f1114;
+  --section-2: #0c0f12;
+  --section-3: #0f1114;
+  --section-cta: #0f1114;
+
+  --panel: rgba(20, 24, 29, 0.70);
+  --text: #f1f5f9;
+  --muted: rgba(241, 245, 249, 0.72);
+
+  --ring: rgba(110, 199, 47, 0.28);
+  --shadow: 0 18px 60px rgba(0, 0, 0, 0.42);
+}
+
+html,
+body {
+  height: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--text);
+  background: var(--bg);
+}
+
+::selection {
+  background: rgba(110, 199, 47, 0.35);
+}
+
+/* ---------------------------------------
+   Layout helpers
+--------------------------------------- */
+.container-pad {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: 72rem; /* max-w-6xl */
+  padding-left: 1rem; /* px-4 */
+  padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+  .container-pad {
+    padding-left: 1.5rem; /* px-6 */
+    padding-right: 1.5rem;
+  }
+}
+
+/* ---------------------------------------
+   Surfaces
+--------------------------------------- */
+.card {
+  background: var(--panel);
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(110, 199, 47, 0.22);
+  backdrop-filter: blur(12px);
+}
+
+.soft-border {
+  border: 1px solid rgba(110, 199, 47, 0.25);
+}
+
+/* ---------------------------------------
+   Buttons — no movement, glow only
+--------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 1.5rem;
+  padding: 0.75rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  transition: box-shadow 200ms ease, background 200ms ease, opacity 200ms ease, filter 200ms ease;
+  will-change: box-shadow, filter;
+  transform: none !important;
+}
+
+.btn:hover {
+  /* glow up (negative y) — glow moves, button does not */
+  filter: drop-shadow(0 12px 28px rgba(110, 199, 47, 0.32));
+  transform: none !important;
+}
+
+.btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(110, 199, 47, 0.20);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--green), rgba(110, 199, 47, 0.72));
+  color: #06110a;
+  box-shadow: 0 4px 24px rgba(110, 199, 47, 0.22);
+  transform: none !important;
+}
+
+.btn-primary:hover {
+  box-shadow: 0 4px 38px rgba(110, 199, 47, 0.42);
+  transform: none !important;
+}
+
+.btn-outline {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(110, 199, 47, 0.65);
+  color: var(--text);
+}
+
+/* Icon buttons */
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.75rem;
+  padding: 0.5rem;
+  transition: background 150ms ease, opacity 150ms ease, box-shadow 200ms ease, filter 200ms ease;
+  background: rgba(110, 199, 47, 0.10);
+  border: 1px solid rgba(110, 199, 47, 0.22);
+  transform: none !important;
+}
+
+.icon-btn:hover {
+  background: rgba(110, 199, 47, 0.16);
+  filter: drop-shadow(0 -8px 16px rgba(110, 199, 47, 0.18));
+  transform: none !important;
+}
+
+/* Dark mode: ONLY adjust the outline pill text (Learn what's inside) */
+.dark .btn-outline { color: #1f2937; }
